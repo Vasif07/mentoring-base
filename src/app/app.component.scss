@@ -18,10 +18,13 @@
 }
 
 .header-nav {
-    display: flex;
+    display: flex; 
 }
 
+
 .header-nav-item {
+    color: #FFFFFF;
+    text-decoration: none;
     margin-right: 20px;
 }
 
@@ -30,8 +33,14 @@
     align-items: center;
 }
 
-.header-phone {
-    margin-right: 10px;
+.phone-logo {
+  margin-right: 7px;
+}
+
+.phone-link {
+    color: #FFFFFF;
+    text-decoration: none;
+    margin-right: 30px;
 }
 
 .header-nav2 {
@@ -40,6 +49,7 @@
 }
 
 .header-nav-item2 {
+    display: flex;
     margin-right: 35px;
     align-items: center;
 }
@@ -68,24 +78,30 @@
 }
 
 .header-nav-item_test {
+    background: transparent;
+    border: none;
+    cursor: pointer;
     margin-right: 15px;
     margin-left: 10px;
     font-size: 12px;
+    transition: color 0.2s;
 }
+
+.header-nav-item_test:hover {
+    color: #007bff;
+  }
 
 .header-nav-search_map {
     display: flex;
     align-items: center;
 }
 
-.header-nav-item_test1 {
+.header-nav-item_location {
+    gap: 3px;
+    color: #FFFFFF;
+    display: flex;
+    font-size: 14px;
     margin-left: 20px;
-    margin-right: 7px;
-}
-
-.header-nav-item_test-1 {
-    font-size: 12px;
-    color:white
 }
 
   .search {
