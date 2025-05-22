@@ -70,7 +70,7 @@
 }
 
 .header-logo_test {
-    margin-right: 10 px;
+    margin-right: 10px;
 }
 
 .header-nav_test {
@@ -176,7 +176,7 @@
     width: 600px;
     box-shadow: 0px 20px 50px 0px #3C3C3B12;
     max-height: 428px;
-    background-image: url(/assets/image_19.png);
+    background-image: url("/assets/image_19.png");
     background-repeat: no-repeat;
     overflow: hidden;
     background-position-y: bottom;
@@ -224,7 +224,7 @@
     box-shadow: 0px 20px 50px 0px #3C3C3B12;
     background-repeat: no-repeat;
     overflow: hidden;
-    background-image: url(/assets/image_14.svg);
+    background-image: url("/assets/image_14.svg");
     background-position-y: bottom;
     background-position-x: left;
     padding: 5px;
@@ -262,7 +262,7 @@
     box-shadow: 0px 20px 50px 0px #3C3C3B12;
     background-repeat: no-repeat;
     overflow: hidden;
-    background-image: url(/assets/image_17.svg);
+    background-image: url("/assets/image_17.svg");
     background-position-y: bottom;
     background-position-x: right;
     padding: 5px;
@@ -291,7 +291,7 @@
     box-shadow: 0px 20px 50px 0px #3C3C3B12;
     background-repeat: no-repeat;
     overflow: hidden;
-    background-image: url(/assets/image_18.svg);
+    background-image: url("/assets/image_18.svg");
     background-position-y: bottom;
     background-position-x: right;
     padding: 5px;
@@ -321,7 +321,7 @@
     box-shadow: 0px 20px 50px 0px #3C3C3B12;
     background-repeat: no-repeat;
     overflow: hidden;
-    background-image: url(/assets/image_15.svg);
+    background-image: url("/assets/image_15.svg");
     background-position-y: bottom;
     background-position-x: 5%;
     padding: 5px;
@@ -357,7 +357,6 @@
 .head-text {
     display: flex;
     justify-content:space-between;
-    // margin: 0 15px;
 }
 
 .left-text {
@@ -386,14 +385,13 @@
     box-shadow: 0px 20px 50px 0px #3C3C3B12;
     background-repeat: no-repeat;
     overflow: hidden;
-    background-image: url(/assets/image_13.svg);
+    background-image: url("/assets/image_13.svg");
     background-position-y: 7%;
     background-position-x: center;
     padding: 5px;
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
-    // margin: auto;
 }
  
 .top-line {
@@ -453,6 +451,7 @@
     font-size: 16px;
     padding-left: 24px;
     padding-right: 24px;
+    text-decoration: line-through;
  }
 
  .text-price2 {
@@ -487,9 +486,18 @@
     border: none;
     background: transparent;
     cursor: pointer;
-    font-size: 20px;
+    font-size: 16px;
     font-weight: 400;
-    word-spacing: 10px;
+}
+
+.number-input {
+    border: none;
+    outline: none;
+    width: 20px;
+    text-align: center;
+    font-size: 20px;
+    background: transparent;
+    padding: 0;
 }
 
 .button-basket {
@@ -554,7 +562,7 @@
 }
 
 .background {
-    background-image: url(/assets/Rectangle_9.png);
+    background-image: url("/assets/Rectangle_9.png");
     height: 251px;
 }
 .big-text {
