@@ -20,8 +20,6 @@ const upperCaseMenuItems: string[] = menuItems.map(
   }
 )
 
-console.log(upperCaseMenuItems)
-
 @Component({
   selector: 'app-root',
   standalone: true,
@@ -48,7 +46,7 @@ export class AppComponent {
 
   changeMenuText() {
     this.menuItems = upperCaseMenuItems.map(
-      item => this.isUpperCase ? item.toLowerCase() : item.toUpperCase()
+      (item: string) => this.isUpperCase ? item.toLowerCase() : item.toUpperCase()
     )
   
     this.isUpperCase = !this.isUpperCase
