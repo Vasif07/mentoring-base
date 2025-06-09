@@ -1,7 +1,10 @@
 import { NgFor, NgIf } from '@angular/common';
 import { Component } from '@angular/core';
-import { Title } from '@angular/platform-browser';
 import { RouterOutlet } from '@angular/router';
+import { RouterLink } from '@angular/router';
+import { HeaderComponent } from './header/header.component';
+import { Router } from '@angular/router';
+
 
 const getMenuItem = (arg: string): string => {
   console.log("Receive item: " + arg);              
@@ -23,7 +26,7 @@ const upperCaseMenuItems: string[] = menuItems.map(
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, NgIf,NgFor],
+  imports: [RouterOutlet, NgIf,NgFor, RouterLink, HeaderComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
@@ -32,8 +35,8 @@ export class AppComponent {
 
   isShowCatalog: boolean = false;
 
-  readonly headerItem1: "Главная" = "Главная";
-  readonly headerItem3: "Каталог" = "Каталог";
+  readonly headerItem1: string = "Пользователи";
+  readonly headerItem3: string = "Каталог";
   readonly aboutCompany: string =getMenuItem("О компании");
 
   isShowImg: boolean = true;
@@ -46,11 +49,22 @@ export class AppComponent {
 
   changeMenuText() {
     this.menuItems = upperCaseMenuItems.map(
-      (item: string) => this.isUpperCase ? item.toLowerCase() : item.toUpperCase()
+    (item:string) => this.isUpperCase ? item.toLowerCase() : item.toUpperCase()
     )
   
     this.isUpperCase = !this.isUpperCase
   }
+
 }
 
 
+const user = {
+  name: 'Ilnur',
+  surname:'Ryazhapov',
+  height: 185,
+  weight: 100
+}
+
+user.name = 'Petr'
+
+console.log(user)

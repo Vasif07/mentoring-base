@@ -1,0 +1,32 @@
+.usercomponent-text{
+    text-align: center;
+}
+
+.users-container{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 16px; 
+    padding: 10px;
+}
+
+.users-boxs{
+    width: 200px;
+    height: 200px;
+    border: 1px solid black;
+    margin: 5px;
+    padding: 10px;
+    box-shadow: 0px 20px 50px 0px #3C3C3B12;
+}
+
+.delete{
+    border-radius: 54px;
+    padding-top: 14px;
+    padding-right: 28px;
+    padding-bottom: 14px;
+    padding-left: 28px;
+    border-width: 1px;
+    background: transparent;
+    border-color: #F0BA4E;
+    cursor: pointer;
+}

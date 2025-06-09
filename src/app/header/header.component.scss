@@ -1,0 +1,132 @@
+.header {
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+    height:80px;
+    color:white; 
+    background-color:#4B565E;
+    padding: 0 240px;
+}
+
+.header-left {
+    display: flex;
+    align-items: center;
+}
+
+.header-logo {
+    margin-right: 20px;
+}
+
+.header-nav {
+    display: flex; 
+}
+
+
+.header-nav-item {
+    color: #FFFFFF;
+    text-decoration: none;
+    margin-right: 20px;
+}
+
+.header-right {
+    display: flex;
+    align-items: center;
+}
+
+.phone-logo {
+  margin-right: 7px;
+}
+
+.phone-link {
+    color: #FFFFFF;
+    text-decoration: none;
+    margin-right: 30px;
+}
+
+.header-nav2 {
+    display: flex;
+    align-items: center;
+}
+
+.header-nav-item2 {
+    display: flex;
+    margin-right: 35px;
+    align-items: center;
+}
+
+.test_header {
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 48px;
+    color:black; 
+    background-color:#F0BA4E;
+    padding: 0 240px;
+}
+
+.header-left_test {
+    display: flex;
+    align-items: center;
+}
+
+.header-logo_test {
+    margin-right: 10px;
+}
+
+.header-nav_test {
+    display: flex;
+}
+
+.header-nav-item_test {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    margin-right:10px;
+    margin-left: 10px;
+    font-size: 12px;
+    transition: color 0.2s;
+}
+
+.header-nav-item_test:hover {
+    color: #007bff;
+  }
+
+.header-nav-search_map {
+    display: flex;
+    align-items: center;
+}
+
+  .search {
+    display: flex;
+    align-items: center;
+    border-bottom: 2px solid #444;
+    width: 280px;
+    padding: 5px;
+  }
+  
+  .search input {
+    flex: 1;
+    border: none;
+    background: transparent;
+    font-size: 15px;
+    color: #444;
+    outline: none;
+  }
+  
+  .search input::placeholder {
+    color: #777;
+  }
+  
+  .search .icon {
+    width: 20px;
+    height: 20px;
+    object-fit: contain;
+  }
+
+  .header-nav-item_location {
+    gap: 3px;
+    color: #FFFFFF;
+    display: flex;
+    font-size: 14px;
+    margin-left: 20px;
+}
