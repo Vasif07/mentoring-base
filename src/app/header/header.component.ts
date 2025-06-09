@@ -27,9 +27,9 @@ const getMenuItem = (arg: string): string => {
 })
 
 export class HeaderComponent {
-    readonly headerItem1: string = "Пользователи";
-    readonly headerItem3: string = "Каталог";
-    readonly aboutCompany: string =getMenuItem("О компании");
+  readonly headerItem1: string = "Пользователи";
+  readonly headerItem3: string = "Каталог";
+  readonly aboutCompany: string =getMenuItem("О компании");
 
   isShowCatalog: boolean = true;
 
@@ -38,9 +38,10 @@ export class HeaderComponent {
   menuItems: string[] = upperCaseMenuItems
 
   changeMenuText() {
-    this.menuItems = this.menuItems.map(item =>
-      this.isUpperCase ? item.toLowerCase() : item.toUpperCase()
-    );
-    this.isUpperCase = !this.isUpperCase;
+    this.menuItems = upperCaseMenuItems.map(
+    (item:string) => this.isUpperCase ? item.toLowerCase() : item.toUpperCase()
+    )
+      
+    this.isUpperCase = !this.isUpperCase
   }
 }

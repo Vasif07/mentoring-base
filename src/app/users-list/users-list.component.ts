@@ -44,11 +44,10 @@ export class UsersListComponent {
       this.apiService.get<User[]>('https://jsonplaceholder.typicode.com/users')
         .subscribe((response: User[]) => {
           this.users = response;
-          console.log('USERS: ', this.users);
         });
     }
   
     deleteUser(id: number) {
-      this.users = this.users.filter(item => item.id !== id);
+      this.users = this.users.filter((user: User) => user.id !== id);
     }
   }
