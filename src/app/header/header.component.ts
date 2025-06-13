@@ -4,10 +4,10 @@ import { RouterLink } from '@angular/router';
 
 
 const getMenuItem = (arg: string): string => {
-    console.log("Receive item: " + arg);              
-    const result = "Received item: " + arg;            
-    console.log(result);                               
-    return arg;  
+   console.log("Receive item: " + arg);              
+   const result = "Received item: " + arg;            
+   console.log(result);                               
+   return arg;  
   }
   
   const menuItems: string[] = ["Каталог","Стройматериалы","Инструменты","Электрика","Интерьер и одежда"]
@@ -39,9 +39,12 @@ export class HeaderComponent {
 
   changeMenuText() {
     this.menuItems = upperCaseMenuItems.map(
-    (item:string) => this.isUpperCase ? item.toLowerCase() : item.toUpperCase()
+    (item: string) =>
+      this.isUpperCase
+        ? item.toLowerCase()
+        : item.toUpperCase()
     )
-      
+  
     this.isUpperCase = !this.isUpperCase
   }
 }
