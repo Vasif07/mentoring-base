@@ -1,10 +1,6 @@
 <p class="usercomponent-text">КОМПОНЕНТ СПИСКА ЮЗЕРОВ</p>
 <div class="users-container">
     <div *ngFor="let user of users" class="users-boxs">
-        <p>{{ user.name }}</p>
-        <p>{{ user.email }}</p>
-        <p>{{ user.website }}</p>
-        <p>{{ user.company.name }}</p>
-        <button (click)="deleteUser(user.id)" class="delete">УДАЛИТЬ ЮЗЕРА</button>
+        <app-user-card [user]="user" (deleteUser)="deleteUser($event)"></app-user-card>
      </div>
 </div>

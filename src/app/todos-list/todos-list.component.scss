@@ -1,8 +1,8 @@
-.usercomponent-text{
+.todoscomponent-text{
     text-align: center;
 }
 
-.users-container{
+.todos-container{
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -10,9 +10,9 @@
     padding: 10px;
 }
 
-.users-boxs{
+.todos-boxs{
     width: 200px;
-    height: 200px;
+    height: 280px;
     border: 1px solid black;
     margin: 5px;
     padding: 10px;
