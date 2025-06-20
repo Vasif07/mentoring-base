@@ -7,7 +7,7 @@ import { Todo } from "./todos-list/todos-list.component";
 export class TodosApiService {
     readonly apiService = inject(HttpClient);
     
-    getUsers(): Observable<Todo[]> {
+    getTodos(): Observable<Todo[]> {
         return this.apiService.get<Todo[]>('https://jsonplaceholder.typicode.com/todos')
     }
 }

@@ -18,21 +18,24 @@ export interface Todo {
     imports: [NgFor, TodosCardComponent]
 })
 
-
-
 export class TodosListComponent {
-    readonly todosApiService = inject(TodosApiService)
-    todos:Todo[] = [];
+  readonly todosApiService = inject(TodosApiService);
+
+  todos: Todo[] = [];
   
-    constructor() {
-        this.todosApiService.getUsers().subscribe(
-          (response: Todo[]) => {
-            this.todos = response;
-          }
-      )
-    }
-  
-    deleteTodo(id: number) {
-        this.todos = this.todos.filter(todo => todo.id !== id);
+  constructor() {
+    this.todosApiService.getTodos().subscribe(
+      (response: Todo[]) => {
+        this.todos = response;
       }
+  )
 }
+  
+  deleteTodo(id: number) {
+      this.todos = this.todos.filter(
+        (todo: Todo) => {
+          return todo.id !== id;
+        }
+      );
+    }
+  }

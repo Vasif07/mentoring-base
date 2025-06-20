@@ -36,27 +36,25 @@ export interface User {
     standalone: true,
     imports: [NgFor, UserCardComponent]
 })
+
 export class UsersListComponent {
-    readonly usersApiService = inject(UsersApiService)
-    users: User[] = [];
+  readonly usersApiService = inject(UsersApiService);
+
+  users: User[] = [];
   
-    constructor() {
-        this.usersApiService.getUsers().subscribe(
-          (response: User[]) => {
-            this.users = response;
-          }
-      )
-    }
-  
-    deleteUser(id: number) {
-        this.users = this.users.filter(
-          (user: User) => {
-            if (user.id === id) {
-              return false
-            } else {
-              return true;
-            }
-          }
-        )  
+  constructor() {
+    this.usersApiService.getUsers().subscribe(
+      (response: User[]) => {
+        this.users = response;
       }
+  )
+}
+  
+  deleteUser(id: number) {
+      this.users = this.users.filter(
+        (user: User) => {
+          return user.id !== id;
+        }
+      );
+    }
   }
