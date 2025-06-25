@@ -5,23 +5,21 @@ import { Todo } from "./todos-list/todos-list.component";
 @Injectable({providedIn:'root'})
 export class TodosService {
     todosSubject = new BehaviorSubject<Todo[]>([]);
+    readonly todos$ = this.todosSubject.asObservable();
 
     setTodos(todos: Todo[]) {
         this.todosSubject.next(todos);
     }
 
-    editTodo(editedTodo : Todo) {
+    editTodo(editedTodo: Todo) {
         this.todosSubject.next(
-            this.todosSubject.value.map(
-                todo => {
-                    if(todo.id === editedTodo.id) {
-                        return editedTodo
-                    } else {
-                        return todo
-                    }
-                }
+          this.todosSubject.value.map(
+            (todo: Todo) => 
+              todo.id === editedTodo.id 
+                ? editedTodo 
+                : todo
             )
-        )
+        );
     }
 
     createTodo(todo: Todo) {
