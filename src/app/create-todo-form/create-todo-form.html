@@ -1,0 +1,29 @@
+<h1>CREATE TODO FORM</h1>
+<div class="head-create-todo">
+  <form class="form-head" [formGroup]="form" (ngSubmit)="submitForm()">
+    <p>TITLE:</p>
+    <input type="text" class="form-input" formControlName="title"/>
+       <div *ngIf="form.controls['title'].invalid && (form.controls['title'].dirty || form.controls['title'].touched)" class="alert-danger">
+        <div *ngIf="form.controls['title'].errors">
+        ТЕКСТ ЗАДАЧИ ВВЕДЕН НЕПРАВИЛЬНО
+        </div>
+      </div>
+    <p>USER ID:</p>
+    <input type="text" class="form-input" formControlName="userId"/>
+      <div *ngIf="form.controls['userId'].invalid && (form.controls['userId'].dirty || form.controls['userId'].touched)" class="alert-danger">
+        <div *ngIf="form.controls['userId'].errors">
+        ТОЛЬКО ЧИСЛОВЫЕ ЗНАЧЕНИЯ, ОТ 11 И ВЫШЕ
+        </div>
+      </div>
+    <p>COMPLETED:</p>
+    <input type="text" class="form-input" formControlName="completed"/>
+    <div *ngIf="form.controls['completed'].invalid && (form.controls['completed'].dirty || form.controls['completed'].touched)" class="alert-danger">
+        <div *ngIf="form.controls['completed'].errors">
+        ВВЕДИТЕ ТОЛЬКО "ДА" ИЛИ "НЕТ"
+        </div>
+      </div>
+    <button class="form-button" [disabled]="!form.valid">
+        CREATE TODO
+    </button>
+  </form>
+</div>

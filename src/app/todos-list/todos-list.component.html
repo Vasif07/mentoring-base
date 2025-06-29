@@ -1,4 +1,5 @@
-<p class="todoscomponent-text">КОМПОНЕНТ СПИСКА ЗАДАЧ</p>
+
+<app-create-todo-form (createTodo)="createTodo($event)"></app-create-todo-form>
 <div class="todos-container">
     <div *ngFor="let todo of todosService.todos$ | async" class="todos-boxs">
         <app-todos-card [todo]="todo" (deleteTodo)="deleteTodo($event)"></app-todos-card>
