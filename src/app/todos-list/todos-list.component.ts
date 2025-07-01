@@ -6,7 +6,7 @@ import { TodosService } from "../todos.service";
 import { CreateTodoFormComponent } from "../create-todo-form/create-todo-form.component";
 
 export interface Todo {
-    id: number;
+    id?: number;
     userId: number;
     title: string;
     completed: boolean;

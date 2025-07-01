@@ -23,7 +23,7 @@ export class TodosService {
     }
 
     createTodo(todo: Todo) {
-        const existingTodo = this.todosSubject.value.find(
+        const existingTodo: Todo | undefined = this.todosSubject.value.find(
             currentElement => currentElement.title === todo.title
         );
 

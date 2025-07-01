@@ -1,6 +1,7 @@
 import { NgIf } from "@angular/common";
 import { Component, EventEmitter, Output } from "@angular/core";
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from "@angular/forms";
+import { CreateUser, User } from "../users-list/users-list.component";
 
 @Component ({
     selector: 'app-create-user-form',
@@ -11,7 +12,7 @@ import { FormControl, FormGroup, ReactiveFormsModule, Validators } from "@angula
 })
 export class CreateUserFormComponent {
     @Output ()
-    createUser = new EventEmitter();
+    createUser = new EventEmitter<CreateUser>();
 
     public form = new FormGroup({
         name: new FormControl('null', [Validators.required, Validators.minLength(2)]),
@@ -21,7 +22,19 @@ export class CreateUserFormComponent {
     });
     
     public submitForm(): void {
-        this.createUser.emit(this.form.value);
-        this.form.reset();
-    }
+        if (this.form.valid) {
+    
+    const formValue = this.form.value;
+
+    const newUser: CreateUser = {
+        name: formValue.name ?? '',
+        email: formValue.email ?? '',
+        website: formValue.website ?? '',
+        companyName: formValue.companyName ?? '',
+    };
+
+    this.createUser.emit(newUser);
+    this.form.reset();
+  }
+}
 }
