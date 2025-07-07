@@ -7,15 +7,27 @@
     flex-direction: column;
 }
 
+.input_text {
+    margin-bottom: 15px;
+}
+
 .form-input {
     width: 200px;
 }
 
 .form-button {
-    width: 150px; 
-    margin-top: 20px;
+    background-color: #cccccc;
+    border-radius: 4px;
+    width: 200px; 
+    margin-top: 5px;
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-.alert-danger {
-    color: red;
+.active-button {
+    background-color: #708090 !important;
+    color: #ffffff !important;
+}
+
+.errors {
+    width: 300px;
 }

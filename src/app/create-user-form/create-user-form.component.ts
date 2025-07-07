@@ -1,14 +1,17 @@
-import { NgIf } from "@angular/common";
+import { CommonModule, NgIf } from "@angular/common";
 import { Component, EventEmitter, Output } from "@angular/core";
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from "@angular/forms";
 import { CreateUser, User } from "../users-list/users-list.component";
+import { MatButtonModule } from "@angular/material/button";
+import { MatInputModule } from "@angular/material/input";
+import { MatFormFieldModule } from "@angular/material/form-field";
 
 @Component ({
     selector: 'app-create-user-form',
     templateUrl: './create-user-form.html',
     styleUrl: './create-user-form.scss',
     standalone: true,
-    imports: [ReactiveFormsModule, NgIf],
+    imports: [ReactiveFormsModule, NgIf,  MatButtonModule, MatInputModule, MatFormFieldModule, CommonModule],
 })
 export class CreateUserFormComponent {
     @Output ()
@@ -22,19 +25,19 @@ export class CreateUserFormComponent {
     });
     
     public submitForm(): void {
-        if (this.form.valid) {
-    
+  if (this.form.valid) {
     const formValue = this.form.value;
 
     const newUser: CreateUser = {
-        name: formValue.name ?? '',
-        email: formValue.email ?? '',
-        website: formValue.website ?? '',
-        companyName: formValue.companyName ?? '',
+      name: formValue.name ?? '',
+      email: formValue.email ?? '',
+      website: formValue.website ?? '',
+      companyName: formValue.companyName ?? '',
     };
 
     this.createUser.emit(newUser);
     this.form.reset();
   }
 }
+
 }

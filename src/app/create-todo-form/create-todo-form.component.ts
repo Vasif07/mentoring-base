@@ -2,6 +2,10 @@ import { NgIf } from "@angular/common";
 import { Component, EventEmitter, Output } from "@angular/core";
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from "@angular/forms";
 import { Todo } from "../todos-list/todos-list.component";
+import { MatButtonModule } from '@angular/material/button';
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { CommonModule } from "@angular/common";
 
 
 @Component ({
@@ -9,7 +13,7 @@ import { Todo } from "../todos-list/todos-list.component";
     templateUrl: './create-todo-form.html',
     styleUrl: './create-todo-form.scss',
     standalone: true,
-    imports: [ReactiveFormsModule, NgIf],
+    imports: [ReactiveFormsModule, NgIf, MatButtonModule, MatInputModule, MatFormFieldModule, CommonModule],
 })
 
 export class CreateTodoFormComponent {
@@ -21,7 +25,7 @@ export class CreateTodoFormComponent {
         userId: new FormControl('', [Validators.required, Validators.pattern('^[0-9]+$'), Validators.min(11)]),
         completed: new FormControl('', [Validators.required, Validators.minLength(2), Validators.pattern(/^(да|нет)$/i) ]),
     });
-    
+        
     public submitForm(): void {
         if (this.form.invalid) return;
 
