@@ -8,8 +8,8 @@ import { MatFormFieldModule } from "@angular/material/form-field";
 
 @Component ({
     selector: 'app-create-user-form',
-    templateUrl: './create-user-form.html',
-    styleUrl: './create-user-form.scss',
+    templateUrl: './create-user-form.component.html',
+    styleUrl: './create-user-form.component.scss',
     standalone: true,
     imports: [ReactiveFormsModule, NgIf,  MatButtonModule, MatInputModule, MatFormFieldModule, CommonModule],
 })
@@ -25,14 +25,20 @@ export class CreateUserFormComponent {
     });
     
     public submitForm(): void {
-  if (this.form.valid) {
-    const formValue = this.form.value;
+        if (this.form.valid) {
+
+    const formValue = this.form.value as {
+        name: string;
+        email: string;
+        website: string;
+        companyName: string;
+    };
 
     const newUser: CreateUser = {
-      name: formValue.name ?? '',
-      email: formValue.email ?? '',
-      website: formValue.website ?? '',
-      companyName: formValue.companyName ?? '',
+        name: formValue.name,
+        email: formValue.email,
+        website: formValue.website,
+        companyName: formValue.companyName,
     };
 
     this.createUser.emit(newUser);

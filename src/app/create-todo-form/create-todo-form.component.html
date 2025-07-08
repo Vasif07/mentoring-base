@@ -5,7 +5,7 @@
       <mat-form-field appereance="standart" class="form-input">
         <mat-label>Название задачи</mat-label>
         <input matInput type="text" formControlName="title"/>
-        <mat-error class="errors" *ngIf="form.controls['title'].invalid && (form.controls['title'].dirty || form.controls['title'].touched)">
+        <mat-error class="errors">
         ТЕКСТ ЗАДАЧИ ВВЕДЕН НЕПРАВИЛЬНО
         </mat-error>
       </mat-form-field>
@@ -14,7 +14,7 @@
       <mat-form-field appereance="standart" class="form-input">
         <mat-label>Автор задачи</mat-label>
         <input matInput type="text" formControlName="userId"/>
-        <mat-error class="errors" *ngIf="form.controls['userId'].invalid && (form.controls['userId'].dirty || form.controls['userId'].touched)">
+        <mat-error class="errors">
         ТОЛЬКО ЧИСЛОВЫЕ ЗНАЧЕНИЯ, ОТ 11 И ВЫШЕ
         </mat-error>
       </mat-form-field>
@@ -23,7 +23,7 @@
       <mat-form-field appereance="standart" class="form-input">
         <mat-label>Задача завершена?</mat-label>
         <input matInput type="text" formControlName="completed"/>
-        <mat-error class="errors" *ngIf="form.controls['completed'].invalid && (form.controls['completed'].dirty || form.controls['completed'].touched)">
+        <mat-error class="errors">
         ВВЕДИТЕ ТОЛЬКО "ДА" ИЛИ "НЕТ"
         </mat-error>
       </mat-form-field>

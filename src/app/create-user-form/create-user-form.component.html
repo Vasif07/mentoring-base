@@ -5,7 +5,7 @@
       <mat-form-field appereance="standart" class="form-input">
         <mat-label>Имя</mat-label>
         <input matInput type="text" formControlName="name"/>
-        <mat-error class="errors" *ngIf="form.controls['name'].invalid && (form.controls['name'].dirty || form.controls['name'].touched)">
+        <mat-error class="errors">
         ИМЯ ВВЕДЕНO НЕПРАВИЛЬНО
         </mat-error>
       </mat-form-field>
@@ -14,7 +14,7 @@
       <mat-form-field appereance="standart" class="form-input">
         <mat-label>Электронная почта</mat-label>
         <input matInput type="text" formControlName="email"/>
-        <mat-error class="errors" *ngIf="form.controls['email'].invalid && (form.controls['email'].dirty || form.controls['email'].touched)">
+        <mat-error class="errors">
         EMAIL ВВЕДЕН НЕПРАВИЛЬНО
         </mat-error>
       </mat-form-field>
@@ -23,7 +23,7 @@
       <mat-form-field appereance="standart" class="form-input">
         <mat-label>Веб-сайт</mat-label>
         <input matInput type="text" formControlName="website"/>
-        <mat-error class="errors" *ngIf="form.controls['website'].invalid && (form.controls['website'].dirty || form.controls['website'].touched)">
+        <mat-error class="errors">
         WEBSITE ВВЕДЕН НЕПРАВИЛЬНО
         </mat-error>
       </mat-form-field>
@@ -32,7 +32,7 @@
       <mat-form-field appereance="standart" class="form-input">
         <mat-label>Имя компании</mat-label>
         <input matInput type="text" formControlName="companyName"/>
-        <mat-error class="errors" *ngIf="form.controls['companyName'].invalid && (form.controls['companyName'].dirty || form.controls['companyName'].touched)">
+        <mat-error class="errors">
         ИМЯ КОМПАНИИ ВВЕДЕНО НЕПРАВИЛЬНО
         </mat-error>
       </mat-form-field>

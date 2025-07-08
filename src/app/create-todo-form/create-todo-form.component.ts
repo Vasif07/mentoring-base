@@ -10,8 +10,8 @@ import { CommonModule } from "@angular/common";
 
 @Component ({
     selector: 'app-create-todo-form',
-    templateUrl: './create-todo-form.html',
-    styleUrl: './create-todo-form.scss',
+    templateUrl: './create-todo-form.component.html',
+    styleUrl: './create-todo-form.component.scss',
     standalone: true,
     imports: [ReactiveFormsModule, NgIf, MatButtonModule, MatInputModule, MatFormFieldModule, CommonModule],
 })
@@ -29,10 +29,14 @@ export class CreateTodoFormComponent {
     public submitForm(): void {
         if (this.form.invalid) return;
 
-    const formValue = this.form.value;
+    const formValue = this.form.value as {
+        title: string;
+        userId: string;
+        completed: string;
+    };
 
     const newTodo: Todo = {
-        title: formValue.title ?? '',
+        title: formValue.title,
         userId: Number(formValue.userId) || 0,
         completed: formValue.completed === 'true',
     };
