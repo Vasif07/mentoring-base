@@ -7,6 +7,11 @@ import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { CommonModule } from "@angular/common";
 
+interface TodoFormValue {
+    title: string;
+    userId: string;
+    completed: string;
+}
 
 @Component ({
     selector: 'app-create-todo-form',
@@ -29,11 +34,7 @@ export class CreateTodoFormComponent {
     public submitForm(): void {
         if (this.form.invalid) return;
 
-    const formValue = this.form.value as {
-        title: string;
-        userId: string;
-        completed: string;
-    };
+    const formValue = this.form.value as TodoFormValue;
 
     const newTodo: Todo = {
         title: formValue.title,

@@ -6,6 +6,13 @@ import { MatButtonModule } from "@angular/material/button";
 import { MatInputModule } from "@angular/material/input";
 import { MatFormFieldModule } from "@angular/material/form-field";
 
+interface UserFormValue {
+    name: string;
+    email: string;
+    website: string;
+    companyName: string;
+}
+
 @Component ({
     selector: 'app-create-user-form',
     templateUrl: './create-user-form.component.html',
@@ -27,12 +34,7 @@ export class CreateUserFormComponent {
     public submitForm(): void {
         if (this.form.valid) {
 
-    const formValue = this.form.value as {
-        name: string;
-        email: string;
-        website: string;
-        companyName: string;
-    };
+    const formValue = this.form.value as UserFormValue;
 
     const newUser: CreateUser = {
         name: formValue.name,
