@@ -1,12 +1,11 @@
 import { CommonModule, NgIf } from "@angular/common";
 import { Component, EventEmitter, Output } from "@angular/core";
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from "@angular/forms";
-import { CreateUser, User } from "../users-list/users-list.component";
 import { MatButtonModule } from "@angular/material/button";
 import { MatInputModule } from "@angular/material/input";
 import { MatFormFieldModule } from "@angular/material/form-field";
 
-interface UserFormValue {
+interface CreateUser {
     name: string;
     email: string;
     website: string;
@@ -20,6 +19,7 @@ interface UserFormValue {
     standalone: true,
     imports: [ReactiveFormsModule, NgIf,  MatButtonModule, MatInputModule, MatFormFieldModule, CommonModule],
 })
+
 export class CreateUserFormComponent {
     @Output ()
     createUser = new EventEmitter<CreateUser>();
@@ -33,19 +33,13 @@ export class CreateUserFormComponent {
     
     public submitForm(): void {
         if (this.form.valid) {
+    const formValue = this.form.value as CreateUser;
 
-    const formValue = this.form.value as UserFormValue;
-
-    const newUser: CreateUser = {
-        name: formValue.name,
-        email: formValue.email,
-        website: formValue.website,
-        companyName: formValue.companyName,
-    };
-
-    this.createUser.emit(newUser);
+    this.createUser.emit(formValue);
     this.form.reset();
+    }
   }
 }
 
-}
+
+

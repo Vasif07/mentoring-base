@@ -10,7 +10,7 @@ import { CommonModule } from "@angular/common";
 interface TodoFormValue {
     title: string;
     userId: string;
-    completed: string;
+    completed: boolean;
 }
 
 @Component ({
@@ -28,7 +28,7 @@ export class CreateTodoFormComponent {
     public form = new FormGroup({
         title: new FormControl('null', [Validators.required, Validators.minLength(3)]),
         userId: new FormControl('', [Validators.required, Validators.pattern('^[0-9]+$'), Validators.min(11)]),
-        completed: new FormControl('', [Validators.required, Validators.minLength(2), Validators.pattern(/^(да|нет)$/i) ]),
+        completed: new FormControl(false, [Validators.required, Validators.minLength(2), Validators.pattern(/^(да|нет)$/i) ]),
     });
         
     public submitForm(): void {
@@ -39,7 +39,7 @@ export class CreateTodoFormComponent {
     const newTodo: Todo = {
         title: formValue.title,
         userId: Number(formValue.userId) || 0,
-        completed: formValue.completed === 'true',
+        completed: formValue.completed,
     };
 
     this.createTodo.emit(newTodo);
