@@ -5,7 +5,6 @@ import { UserCardComponent } from "./user-card/user-card.component";
 import { UsersService } from "../users.service";
 import { CreateUserFormComponent } from "../create-user-form/create-user-form.component";
 
-
 export interface User {
     id: number;
     name: string;
@@ -62,19 +61,23 @@ export class UsersListComponent {
     );
 }
 
-    deleteUser(id: number) {
-        this.usersService.deleteUser(id);
+    deleteUser(userId: number): void {
+        this.usersService.deleteUser(userId);
     }
 
-    public createUser(formData: CreateUser) {
-      this.usersService.createUser({
-        id: new Date().getTime(),
-        name: formData.name,
-        email: formData.email,
-        website: formData.website,
-        company: {
-          name: formData.companyName,
-        }
-      });
+    editUser(updatedUser: User): void {
+        this.usersService.editUser(updatedUser);
+    }
+
+    createUser(newUser: CreateUser): void {
+        const user: User = {
+            id: Date.now(),
+            name: newUser.name,
+            email: newUser.email,
+            website: newUser.website,
+            company: { name: newUser.companyName },
+        };
+
+        this.usersService.addUser(user);
     }
 }

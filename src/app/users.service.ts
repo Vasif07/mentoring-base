@@ -11,6 +11,11 @@ export class UsersService {
         this.usersSubject.next(users);
     }
 
+    addUser(newUser: User): void {
+        const currentUsers = this.usersSubject.value;
+        this.usersSubject.next([...currentUsers, newUser]);
+    }
+
     editUser(editedUser: User) {
         this.usersSubject.next(
           this.usersSubject.value.map(
@@ -22,18 +27,15 @@ export class UsersService {
         );
     }
 
-    createUser(user: User) {
-        const existingUser: User | undefined = this.usersSubject.value.find(
-            currentElement => currentElement.email === user.email
-        );
-
+    createUser(user: User): boolean {
+        const existingUser = this.usersSubject.value.find(u => u.email === user.email);
+  
         if (existingUser) {
-            alert('ТАКОЙ EMAIL УЖЕ ЗАРЕГИСТРИРОВАН');
-            return;
-          }
-          
-            this.usersSubject.next([...this.usersSubject.value, user]);
-            alert('НОВЫЙ ПОЛЬЗОВАТЕЛЬ УСПЕШНО ДОБАВЛЕН');
+            return false;
+        }
+
+        this.usersSubject.next([...this.usersSubject.value, user]);
+            return true;
     }
 
     deleteUser(id: number) {

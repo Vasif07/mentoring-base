@@ -1,0 +1,40 @@
+.form-head {
+    box-shadow: 0 4px 12px rgba(0, 150, 136, 0.2);
+    box-shadow: inset 0 0 0 4px rgb(10, 10, 125);
+    display: flex; 
+    flex-direction: column;
+    align-items: center;
+    background-color: rgb(175, 243, 254);
+    border: 4px solid rgb(255, 255, 255);
+    border-radius: 8px;
+    padding: 30px 30px 30px 30px;
+}
+
+.input_text {
+    margin-bottom: 15px;
+}
+
+.form-input {
+    width: 300px;
+}
+
+.custom-icon {
+    color:rgb(10, 10, 125);
+}
+
+.form-button {
+    background-color: #cccccc;
+    border-radius: 4px;
+    width: 200px;
+    margin-top: 5px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.active-button {
+    background-color: rgb(10, 10, 125) !important;
+    color: #ffffff !important;
+}
+
+.errors {
+    width: 300px;
+}

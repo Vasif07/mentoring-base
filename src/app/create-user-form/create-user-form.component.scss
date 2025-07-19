@@ -1,33 +1,18 @@
-.head-create-user {
-    margin: 30px 30px 30px 0;
-}
-
-.form-head {
-    display: flex; 
-    flex-direction: column;
-}
-
-.input_text {
-    margin-bottom: 15px;
-}
-
-.form-input {
-    width: 200px;
+.create-user {
+    margin: 10px 0 0 10px;
 }
 
 .form-button {
-    background-color: #cccccc;
+    background-color: rgb(10, 10, 125);
+    border-color: rgb(10, 10, 125);
+    border-width: 3px;
+    box-shadow: inset 0 0 0 2px rgb(255, 255, 255);
     border-radius: 4px;
     width: 200px; 
-    margin-top: 5px;
     transition: background-color 0.3s ease, color 0.3s ease;
+    color: white !important;
+    padding-top: 20px;
+    padding-bottom: 20px;
 }
 
-.active-button {
-    background-color: #708090 !important;
-    color: #ffffff !important;
-}
 
-.errors {
-    width: 300px;
-}

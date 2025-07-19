@@ -1,0 +1,56 @@
+.confirmDelete {
+    text-align: center;
+    padding: 20px;
+    background-color: rgb(175, 243, 254);
+    border: 4px solid rgb(255, 255, 255);
+    box-shadow: 0 5px 8px rgba(0.35, 0.35, 0.35, 0.30);
+    box-shadow: inset 0 0 0 4px rgb(10, 10, 125);
+    border-radius: 8px;
+}
+
+.head-text {
+    font-size: 17px;
+    font-weight: 500;
+}
+
+.buttons {
+    justify-content: space-between;
+    display: flex;
+    padding: 0 40px;
+    align-items: center;
+    margin-top: 25px;
+}
+
+.button_1 {
+    border-radius: 54px;
+    padding-top: 12px;
+    padding-right: 24px;
+    padding-bottom: 12px;
+    padding-left: 24px;
+    border-width: 3px;
+    background: green;
+    border-color: rgb(10, 10, 125);
+    box-shadow: inset 0 0 0 2px rgb(255, 255, 255);
+    cursor: pointer;
+    color: white;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.button_2 {
+    border-radius: 54px;
+    padding-top: 12px;
+    padding-right: 24px;
+    padding-bottom: 12px;
+    padding-left: 24px;
+    border-width: 3px;
+    background: red;
+    border-color: rgb(10, 10, 125);
+    box-shadow: inset 0 0 0 2px rgb(255, 255, 255);
+    cursor: pointer;
+    color: white;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}

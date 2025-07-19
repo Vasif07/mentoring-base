@@ -1,0 +1,46 @@
+<form class="form-head" [formGroup]="form"  (ngSubmit)="submit()">
+    <div class="input_text">
+      <mat-form-field class="form-input">
+        <mat-label>Имя</mat-label>
+        <input matInput placeholder="Введите имя" formControlName="name"/>
+        <mat-icon matSuffix class="custom-icon">person</mat-icon>
+        <mat-error class="errors">
+        ИМЯ ВВЕДЕНO НЕПРАВИЛЬНО
+        </mat-error>
+      </mat-form-field>
+    </div>
+    <div class="input_text">
+      <mat-form-field class="form-input">
+        <mat-label>Электронная почта</mat-label>
+        <input matInput placeholder="pat@example.com" formControlName="email"/>
+        <mat-icon matSuffix class="custom-icon">email</mat-icon>
+        <mat-error class="errors">
+        EMAIL ВВЕДЕН НЕПРАВИЛЬНО
+        </mat-error>
+      </mat-form-field>
+    </div>
+    <div class="input_text">
+      <mat-form-field class="form-input">
+        <mat-label>Веб-сайт</mat-label>
+        <input matInput type="text" formControlName="website"/>
+        <mat-icon matSuffix class="custom-icon">language</mat-icon>
+        <mat-error class="errors">
+        WEBSITE ВВЕДЕН НЕПРАВИЛЬНО
+        </mat-error>
+      </mat-form-field>
+    </div>
+    <div>
+      <mat-form-field class="form-input">
+        <mat-label>Имя компании</mat-label>
+        <input matInput type="text" formControlName="companyName"/>
+        <mat-icon matSuffix class="custom-icon">business</mat-icon>
+        <mat-error class="errors">
+        ИМЯ КОМПАНИИ ВВЕДЕНО НЕПРАВИЛЬНО
+        </mat-error>
+      </mat-form-field>
+    </div>
+    <button type="submit" mat-stroked-button class="form-button" [ngClass]="{ 'active-button': form.valid }" [disabled]="!form.valid">
+      <mat-icon>edit</mat-icon>
+      РЕДАКТИРОВАТЬ
+    </button>
+</form>

@@ -1,45 +1,39 @@
-import { CommonModule, NgIf } from "@angular/common";
-import { Component, EventEmitter, Output } from "@angular/core";
-import { FormControl, FormGroup, ReactiveFormsModule, Validators } from "@angular/forms";
+import { CommonModule } from "@angular/common";
+import { Component, EventEmitter, inject, Output } from "@angular/core";
+import { ReactiveFormsModule } from "@angular/forms";
 import { MatButtonModule } from "@angular/material/button";
-import { MatInputModule } from "@angular/material/input";
-import { MatFormFieldModule } from "@angular/material/form-field";
+import { MatDialog, MatDialogModule } from "@angular/material/dialog";
+import { DialogUserComponent } from "./dialog-user/dialog-user.component";
+import { MatIconModule } from '@angular/material/icon';
 
-interface CreateUser {
-    name: string;
-    email: string;
-    website: string;
-    companyName: string;
+export interface CreateUser {
+  name: string;
+  email: string;
+  website: string;
+  companyName: string;
 }
 
-@Component ({
-    selector: 'app-create-user-form',
-    templateUrl: './create-user-form.component.html',
-    styleUrl: './create-user-form.component.scss',
-    standalone: true,
-    imports: [ReactiveFormsModule, NgIf,  MatButtonModule, MatInputModule, MatFormFieldModule, CommonModule],
+@Component({
+  selector: 'app-create-user-form',
+  templateUrl: './create-user-form.component.html',
+  styleUrl: './create-user-form.component.scss',
+  standalone: true,
+  imports: [CommonModule, ReactiveFormsModule, MatButtonModule, MatDialogModule, MatIconModule],
 })
 
 export class CreateUserFormComponent {
-    @Output ()
-    createUser = new EventEmitter<CreateUser>();
+  @Output() createUser = new EventEmitter<CreateUser>();
+  readonly dialog = inject(MatDialog);
 
-    public form = new FormGroup({
-        name: new FormControl('null', [Validators.required, Validators.minLength(2)]),
-        email: new FormControl('null', [Validators.required, Validators.email]),
-        website: new FormControl('null', [Validators.required, Validators.minLength(3)]),
-        companyName: new FormControl('null', [Validators.required, Validators.minLength(2)]),
+  openDialog(): void {
+    const dialogRef = this.dialog.open(DialogUserComponent, {
+      data: null,
     });
-    
-    public submitForm(): void {
-        if (this.form.valid) {
-    const formValue = this.form.value as CreateUser;
 
-    this.createUser.emit(formValue);
-    this.form.reset();
-    }
+    dialogRef.afterClosed().subscribe((result: CreateUser | undefined) => {
+      if (result) {
+        this.createUser.emit(result);
+      }
+    });
   }
 }
-
-
-

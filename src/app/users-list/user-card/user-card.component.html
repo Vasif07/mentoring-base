@@ -1,21 +1,24 @@
-<p>Имя</p>
-<div>
-    {{ user.name }}
+<div class="items">
+  <mat-icon matPrefix>person</mat-icon>
+  <p><strong>Имя:</strong> {{ user.name }}</p>
 </div>
-
-<p>Email</p>
-<div>
-    {{ user.email }}
+<div class="items">
+  <mat-icon matPrefix>email</mat-icon>
+  <p><strong>Email:</strong> {{ user.email }}</p>
 </div>
-
-<p>Сайт</p>
-<div>
-    {{ user.website }}
+<div class="items">
+  <mat-icon matPrefix>language</mat-icon>
+  <p><strong>Сайт:</strong> {{ user.website }}</p>
 </div>
-
-<p>Компания</p>
-<div>
-    {{ user.company.name }}
+<div class="items">
+  <mat-icon matPrefix>business</mat-icon>
+  <p><strong>Компания:</strong> {{ user.company.name }}</p>
 </div>
-<button (click) ="onDeleteUser(user.id)" class="delete">УДАЛИТЬ ЮЗЕРА</button>
-
+  <div class="button-wrapper">
+    <button (click)="openDeleteDialog()" class="action_button">Удалить Юзера
+    <mat-icon>delete</mat-icon>
+    </button>
+    <button (click)="openEditDialog()" class="action_button">Редактировать Юзера
+    <mat-icon>edit</mat-icon>
+    </button>
+  </div>
