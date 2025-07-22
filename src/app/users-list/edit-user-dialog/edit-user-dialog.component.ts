@@ -40,14 +40,14 @@ export class EditUserDialogComponent {
   get userWithUpdatedFields(): User {
     return {
       id: this.data.user.id,
-      name: this.form.value.name ?? '',
-      email: this.form.value.email ?? '',
-      website: this.form.value.website ?? '',
+      name: this.form.value.name!,
+      email: this.form.value.email!,
+      website: this.form.value.website!,
       company: {
-      name: this.form.value.companyName ?? '',
+      name: this.form.value.companyName!,
       },
     };
- }
+  }
 
   submit(): void {
     if (this.form.valid) {

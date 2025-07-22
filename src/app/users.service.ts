@@ -28,7 +28,9 @@ export class UsersService {
     }
 
     createUser(user: User): boolean {
-        const existingUser = this.usersSubject.value.find(u => u.email === user.email);
+        const existingUser: User | undefined = this.usersSubject.value.find(
+        (u: User) => u.email === user.email
+        );
   
         if (existingUser) {
             return false;

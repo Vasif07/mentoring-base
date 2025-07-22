@@ -75,7 +75,9 @@ export class UsersListComponent {
             name: newUser.name,
             email: newUser.email,
             website: newUser.website,
-            company: { name: newUser.companyName },
+            company: {
+              name: newUser.companyName,
+            },
         };
 
         this.usersService.addUser(user);
