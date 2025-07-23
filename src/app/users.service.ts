@@ -29,7 +29,7 @@ export class UsersService {
 
     createUser(user: User): boolean {
         const existingUser: User | undefined = this.usersSubject.value.find(
-        (u: User) => u.email === user.email
+            (u: User) => u.email === user.email
         );
   
         if (existingUser) {
