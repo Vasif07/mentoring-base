@@ -5,7 +5,7 @@ import { Pipe, PipeTransform } from "@angular/core";
     standalone: true,
     pure: true,
 })
-export class EDitPhoneNumberPipe implements PipeTransform{
+export class EditPhoneNumberPipe implements PipeTransform{
     transform(text: string): string {
         return text.replace(/\D/g, '');
     }

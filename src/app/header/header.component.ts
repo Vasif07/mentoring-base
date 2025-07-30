@@ -1,31 +1,29 @@
 import { NgFor, NgIf } from '@angular/common';
 import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
-import { HeaderDatePipe } from '../pipes/date.pipe';
-import { EDitPhoneNumberPipe } from '../pipes/phone-number.pipe';
+import { EditPhoneNumberPipe } from '../pipes/phone-number.pipe';
+import { CommonModule } from '@angular/common';
 
 
 const getMenuItem = (arg: string): string => {
-    console.log("Receive item: " + arg);              
-    const result = "Received item: " + arg;            
-    console.log(result);                               
-    return arg;  
-  }
-  
-  const menuItems: string[] = ["Каталог","Стройматериалы","Инструменты","Электрика","Интерьер и одежда"]
+  const result = "Received item: " + arg;
+  return arg;  
+}
 
-  const upperCaseMenuItems: string[] = menuItems.map(
-    (item:string) => {
-    return item.toUpperCase();
-    }
-  )
+const menuItems: string[] = ["Каталог","Стройматериалы","Инструменты","Электрика","Интерьер и одежда"]
+
+const upperCaseMenuItems: string[] = menuItems.map(
+  (item:string) => {
+  return item.toUpperCase();
+  }
+)
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss'],
   standalone: true,
-  imports: [NgIf, NgFor, RouterLink, HeaderDatePipe, EDitPhoneNumberPipe]
+  imports: [NgIf, NgFor, RouterLink, EditPhoneNumberPipe, CommonModule]
 })
 
 export class HeaderComponent {
@@ -50,5 +48,5 @@ export class HeaderComponent {
     this.isUpperCase = !this.isUpperCase
   }
 
-  someDate = new Date();
+  someDate: Date = new Date();
 }
