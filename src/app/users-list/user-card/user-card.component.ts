@@ -1,18 +1,21 @@
 import { Component, EventEmitter, inject, Input, Output } from "@angular/core";
 import { User } from "../users-list.component";
-import { MatDialog, MatDialogModule } from '@angular/material/dialog';
+import { MatDialog } from '@angular/material/dialog';
 import { EditUserDialogComponent } from "../edit-user-dialog/edit-user-dialog.component";
 import { DeleteUserDialogComponent } from "../delete-user-dialog/delete-user-dialog.component";
 import { EditUser } from '../edit-user-dialog/edit-user-dialog.component';
 import { MatIconModule } from '@angular/material/icon';
 import { CustomUpperCasePipe } from "../../pipes/upper-case.pipe";
+import { RedDirective } from "../../directives/red.directive";
+import { MatButtonModule } from "@angular/material/button";
+import { ShadowDirective } from "../../directives/shadow.directive";
 
 @Component({
-    selector: 'app-user-card',
-    templateUrl: './user-card.component.html',
-    styleUrls: ['./user-card.component.scss'],
-    standalone: true,
-    imports: [MatIconModule, CustomUpperCasePipe],
+  selector: 'app-user-card',
+  templateUrl: './user-card.component.html',
+  styleUrls: ['./user-card.component.scss'],
+  standalone: true,
+  imports: [MatIconModule, CustomUpperCasePipe, RedDirective, MatButtonModule, ShadowDirective],
 })
 
 export class UserCardComponent {

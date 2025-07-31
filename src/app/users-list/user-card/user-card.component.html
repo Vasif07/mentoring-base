@@ -1,6 +1,6 @@
 <div class="items">
   <mat-icon matPrefix>person</mat-icon>
-  <p>
+  <p red hoverShadow>
     <strong>Имя:</strong> 
     {{ user.name | customUpperCase }}
   </p>
@@ -8,7 +8,7 @@
 
 <div class="items">
   <mat-icon matPrefix>email</mat-icon>
-  <p>
+  <p red hoverShadow>
     <strong>Email:</strong> 
     {{ user.email | customUpperCase }}
   </p>
@@ -16,7 +16,7 @@
 
 <div class="items">
   <mat-icon matPrefix>language</mat-icon>
-  <p>
+  <p red hoverShadow>
     <strong>Сайт:</strong> 
     {{ user.website | customUpperCase }}
   </p>
@@ -24,19 +24,19 @@
 
 <div class="items">
   <mat-icon matPrefix>business</mat-icon>
-  <p>
+  <p red hoverShadow>
     <strong>Компания:</strong> 
     {{ user.company.name }}
   </p>
 </div>
 
 <div class="button-wrapper">
-  <button (click)="openDeleteDialog()" class="action_button">
+  <button  mat-stroked-button class="action_button" (click)="openDeleteDialog()" red hoverShadow>
     Удалить Юзера
     <mat-icon>delete</mat-icon>
   </button>
 
-  <button (click)="openEditDialog()" class="action_button">
+  <button mat-stroked-button class="action_button" (click)="openEditDialog()" red hoverShadow>
     Редактировать Юзера
     <mat-icon>edit</mat-icon>
   </button>

@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { EditPhoneNumberPipe } from '../pipes/phone-number.pipe';
 import { CommonModule } from '@angular/common';
+import { BasketDirective } from '../directives/basket.directive';
 
 
 const getMenuItem = (arg: string): string => {
@@ -23,7 +24,7 @@ const upperCaseMenuItems: string[] = menuItems.map(
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss'],
   standalone: true,
-  imports: [NgIf, NgFor, RouterLink, EditPhoneNumberPipe, CommonModule]
+  imports: [NgIf, NgFor, RouterLink, EditPhoneNumberPipe, CommonModule, BasketDirective]
 })
 
 export class HeaderComponent {

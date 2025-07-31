@@ -8,6 +8,7 @@ import { MAT_DIALOG_DATA, MatDialogClose, MatDialogModule, MatDialogRef, } from 
 import { User } from "../users-list.component";
 import { MatSnackBar } from "@angular/material/snack-bar";
 import { MatIconModule } from '@angular/material/icon';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 export interface EditUser {
   id: number;
@@ -22,7 +23,7 @@ export interface EditUser {
     templateUrl: './edit-user-dialog.component.html',
     styleUrls: ['./edit-user-dialog.component.scss'],
     standalone: true,
-    imports: [ReactiveFormsModule, MatFormFieldModule, MatInputModule, MatButtonModule, MatDialogModule, CommonModule, MatDialogClose, MatIconModule],
+    imports: [ReactiveFormsModule, MatFormFieldModule, MatInputModule, MatButtonModule, MatDialogModule, CommonModule, MatDialogClose, MatIconModule, MatTooltipModule],
 })
 
 export class EditUserDialogComponent {
@@ -44,7 +45,7 @@ export class EditUserDialogComponent {
       email: this.form.value.email!,
       website: this.form.value.website!,
       company: {
-      name: this.form.value.companyName!,
+        name: this.form.value.companyName!,
       },
     };
   }
