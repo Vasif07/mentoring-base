@@ -39,12 +39,14 @@
         </mat-error>
       </mat-form-field>
     </div>
-    <button type="submit"
-            mat-stroked-button
-            [ngClass]="{ 'active-button': form.valid }"
-            [disabled]="!form.valid"
-            matTooltip="Редактировать данные пользователя"
-            class="form-button">
+    <button
+      type="submit"
+      mat-stroked-button
+      [ngClass]="{ 'active-button': form.valid }"
+      [disabled]="!form.valid"
+      matTooltip="Редактировать данные пользователя"
+      class="form-button"
+    >
       <mat-icon>edit</mat-icon>
       РЕДАКТИРОВАТЬ
     </button>

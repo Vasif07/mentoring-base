@@ -7,7 +7,8 @@
       <nav class="header-nav">
         <a class="header-nav-item" routerLink="users">{{headerItem1}}</a>
         <a class="header-nav-item" routerLink="/">{{aboutCompany}}</a>
-        <a class="header-nav-item" *ngIf="isShowCatalog">{{headerItem3}}</a>
+        <a class="header-nav-item" *ngIf="isShowCatalog">{{headerItem2}}</a>
+        <a class="header-nav-item" routerLink="admin-user">{{headerItem3}}</a>
       </nav>
       <button (click)="isShowCatalog = !isShowCatalog">Скрыть/Показать каталог</button>
       <button (click)="changeMenuText()">Изменить текст</button>
@@ -57,4 +58,13 @@
 
   <div>
       <p>{{ someDate | date:'medium' }}</p>
+  </div>
+ 
+  <div class="auth_buttons">
+    <button (click)="loginAsAdmin()">Войти как админ</button>
+    <button (click)="loginAsUser()">Войти как юзер</button>
+    <button (click)="logout()">Выход</button>
+    <button *ngIf="authService.IsAdmin()" routerLink="/admin-user">
+      Перейти в админку
+    </button>
   </div>

@@ -64,7 +64,7 @@
     border-radius: 50px;
     border-width: 1px;
     border: 1px solid #F0BA4E;
-    margin: 35px;
+    margin-left: 35px;
     text-decoration: none;
 }
 
@@ -157,4 +157,12 @@
     display: flex;
     font-size: 14px;
     margin-left: 20px;
+}
+
+.auth_buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    width: 200px;
+    margin-left: 10px;
 }
