@@ -1,4 +1,4 @@
-import { Component } from "@angular/core";
+import { Component, inject } from "@angular/core";
 import { AuthService } from "../auth.service";
 import { NgIf } from "@angular/common";
 import { Router } from "@angular/router";
@@ -12,5 +12,5 @@ import { Router } from "@angular/router";
 })
 
 export class AdminUserComponent {
-  constructor(public authService: AuthService) {}
+  authService = inject(AuthService);
 }

@@ -1,5 +1,5 @@
-import { NgFor, NgIf } from '@angular/common';
-import { Component } from '@angular/core';
+import { AsyncPipe, NgFor, NgIf } from '@angular/common';
+import { Component, inject } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
 import { EditPhoneNumberPipe } from '../pipes/phone-number.pipe';
 import { CommonModule } from '@angular/common';
@@ -24,18 +24,17 @@ const upperCaseMenuItems: string[] = menuItems.map(
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss'],
   standalone: true,
-  imports: [NgIf, NgFor, RouterLink, EditPhoneNumberPipe, CommonModule, BasketDirective]
+  imports: [NgIf, NgFor, RouterLink, EditPhoneNumberPipe, CommonModule, BasketDirective, AsyncPipe]
 })
 
 export class HeaderComponent {
-  constructor (
-    public authService: AuthService,
-    private router: Router
-  ) {}
+  authService = inject(AuthService);
+  router = inject(Router);
+
+  user$ = this.authService.user$;
 
   loginAsAdmin() {
     this.authService.loginAsAdmin();
-    this.router.navigate(['/admin-user']);
   }
 
   loginAsUser() {

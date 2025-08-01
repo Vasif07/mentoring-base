@@ -12,13 +12,13 @@ export class AuthService {
     readonly user$ = this.userSubject.asObservable();
 
     loginAsAdmin():void {
-        const adminAuthUser: AuthUser = { name: 'Admin', isAdmin: true };
-        this.userSubject.next(adminAuthUser);
+        const admin: AuthUser = { name: 'Admin', isAdmin: true };
+        this.userSubject.next(admin);
     }
 
     loginAsUser():void {
-        const normalAuthUser: AuthUser = { name: 'User', isAdmin: false };
-        this.userSubject.next(normalAuthUser);
+        const user: AuthUser = { name: 'User', isAdmin: false };
+        this.userSubject.next(user);
     }
 
     logout(): void {
@@ -26,7 +26,7 @@ export class AuthService {
     }
 
     IsAdmin(): boolean {
-        const user = this.userSubject.value;
+        const user: AuthUser | null = this.userSubject.value;
         return user?.isAdmin === true;
     }
 
