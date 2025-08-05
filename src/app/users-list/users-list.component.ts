@@ -1,9 +1,10 @@
 import { AsyncPipe, NgFor } from "@angular/common";
 import { ChangeDetectionStrategy, Component, inject } from "@angular/core";
-import { UsersApiService } from "../users-api.service";
 import { UserCardComponent } from "./user-card/user-card.component";
-import { UsersService } from "../users.service";
 import { CreateUserFormComponent } from "../create-user-form/create-user-form.component";
+import { Store } from "@ngrx/store";
+import { UsersActions } from "./store/user.actions";
+import { selectUsers } from "./store/users.selectors";
 
 export interface User {
     id: number;
@@ -46,27 +47,19 @@ export interface CreateUser {
 })
 
 export class UsersListComponent {
-    readonly usersApiService = inject(UsersApiService);
-    readonly usersService = inject(UsersService);
+    private readonly store = inject(Store);
+    public readonly users$ = this.store.select(selectUsers);
   
     constructor() {
-        this.usersApiService.getUsers().subscribe(
-            (response: User[]) => {
-                this.usersService.setUsers(response);
-            }
-    )
-
-    this.usersService.users$.subscribe(
-      (users) => console.log(users)
-    );
-}
+      this.store.dispatch(UsersActions.load());
+    }
 
     deleteUser(userId: number): void {
-        this.usersService.deleteUser(userId);
+      this.store.dispatch(UsersActions.delete({ id: userId }));
     }
 
     editUser(updatedUser: User): void {
-        this.usersService.editUser(updatedUser);
+      this.store.dispatch(UsersActions.edit({ editedUser: updatedUser  }));
     }
 
     createUser(newUser: CreateUser): void {
@@ -80,6 +73,7 @@ export class UsersListComponent {
             },
         };
 
-        this.usersService.addUser(user);
+      this.store.dispatch(UsersActions.create({ user }));
     }
+
 }

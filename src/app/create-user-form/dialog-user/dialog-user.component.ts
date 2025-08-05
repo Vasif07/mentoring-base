@@ -7,9 +7,13 @@ import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { CreateUser } from '../create-user-form.component';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { UsersService } from '../../users.service';
 import { User } from '../../users-list/users-list.component';
 import { MatIconModule } from '@angular/material/icon';
+import { Store } from '@ngrx/store';
+import { UsersActions } from '../../users-list/store/user.actions';
+import { selectEmailIsUnique } from '../../users-list/store/users.selectors';
+import { filter, take } from 'rxjs';
+
 
 @Component({
   selector: 'app-dialog-user',
@@ -22,8 +26,8 @@ import { MatIconModule } from '@angular/material/icon';
 export class DialogUserComponent {
   private dialogRef = inject(MatDialogRef<DialogUserComponent>);
   readonly snackBar = inject(MatSnackBar);
-  readonly usersService = inject(UsersService);
-
+  private readonly store = inject(Store);
+  readonly emailIsUnique$ = this.store.select(selectEmailIsUnique);
 
   public form = new FormGroup({
     name: new FormControl('', [Validators.required, Validators.minLength(2)]),
@@ -34,31 +38,38 @@ export class DialogUserComponent {
 
   submitForm(): void {
     if (this.form.valid) {
-        const formValue = this.form.getRawValue() as CreateUser;
+      const formValue = this.form.getRawValue() as CreateUser;
 
-        const newUser: User = {
+      this.store.dispatch(UsersActions.checkEmailUnique({ email: formValue.email }));
+
+      this.store.select(selectEmailIsUnique)
+        .pipe(
+          filter(value => value !== null),
+          take(1)
+        )
+
+        .subscribe(isUnique => {
+        if (isUnique) {
+          const newUser: User = {
             id: Date.now(),
             name: formValue.name,
             email: formValue.email,
             website: formValue.website,
             company: {
-                name: formValue.companyName,
+              name: formValue.companyName,
             },
-        };
+          };
 
-        const success = this.usersService.createUser(newUser);
-
-        if (success) {
-            this.dialogRef.close(newUser);
-            this.snackBar.open('Юзер успешно добавлен', 'ОК', {
-                duration: 3000,
-            });
-        } else {
-            this.snackBar.open('Такой email уже зарегистрирован', 'ОК', {
-                duration: 3000,
-            });
-        }
-  }
-}
+          this.store.dispatch(UsersActions.create({ user: newUser }));
+          this.dialogRef.close();
+          this.snackBar.open('Юзер успешно добавлен', 'ОК', 
+            { duration: 3000 });
+          } else {
+          this.snackBar.open('Такой email уже зарегистрирован', 'ОК', 
+            { duration: 3000 });
+          }
+      });
+    }
+ }
 
 }
