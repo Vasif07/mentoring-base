@@ -5,15 +5,10 @@ export const UsersActions = createActionGroup({
     source: 'Users',
     events: {
         'load': emptyProps(),
-        'set': props<{ users: User[] }>(),
+        'loadSuccess': props<{ users: User[] }>(),
+        'loadFailure': props<{ error: Error }>(),
         'edit': props<{ editedUser: User }>(),
         'create': props<{ user: User }>(),
         'delete': props<{ id: number }>(),
-        'editSuccess': props<{ user: User }>(),
-        'createSuccess': props<{ user: User }>(),
-        'deleteSuccess': props<{ id: number }>(),
-        'checkEmailUnique': props<{ email: string }>(),
-        'checkEmailUniqueSuccess': props<{ isUnique: boolean }>(),
-        'checkEmailUniqueFailure': props<{ error: Error }>(),
     },
 })

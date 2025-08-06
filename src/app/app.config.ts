@@ -20,6 +20,6 @@ export const appConfig: ApplicationConfig = {
         users: userReducer,
         todos: todoReducer,
     }),
-    provideEffects(UsersEffects, TodosEffects),
+    provideEffects([UsersEffects, TodosEffects]),
 ]
 };

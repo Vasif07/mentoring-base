@@ -8,9 +8,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { CommonModule } from "@angular/common";
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Store } from '@ngrx/store';
-import { TodosActions } from '../todos-list/store/todo.actions';
-import { selectTitleIsUnique } from '../todos-list/store/todos.selector';
 import { take } from 'rxjs';
+import { selectTodos } from "../todos-list/store/todos.selector";
 
 interface TodoFormValue {
   title: string;
@@ -41,29 +40,31 @@ export class CreateTodoFormComponent {
 
   submitForm(): void {
     if (this.form.invalid) return;
-      const formValue = this.form.value as TodoFormValue;
-      const titleToCheck = formValue.title.trim().toLowerCase();
 
-      this.store.dispatch(TodosActions.checkTitleUnique({ title: titleToCheck }));
+    const formValue = this.form.value as TodoFormValue;
+    const titleToCheck = formValue.title.trim().toLowerCase();
 
-      this.store.select(selectTitleIsUnique).pipe(take(1)).subscribe(isUnique => {
-        if (!isUnique) {
-        this.snackBar.open('Такая задача уже существует!', 'Закрыть', 
-          { duration: 3000 });
-        return;
-        }
+    this.store.select(selectTodos).pipe(take(1)).subscribe(todos => {
+      const isUnique = !todos.some(todo => todo.title.trim().toLowerCase() === titleToCheck);
 
-      const newTodo: Todo = {
-        title: formValue.title,
-        userId: Number(formValue.userId) || 0,
-        completed: formValue.completed,
-      };
+    if (!isUnique) {
+      this.snackBar.open('Такая задача уже существует!', 'Ок', 
+        { duration: 3000 }
+      );
+      return;
+    }
 
-      this.createTodo.emit(newTodo);
-      this.form.reset();
-      this.snackBar.open('Задача успешно создана!', 'OK',
-        { duration: 3000 });
-    });
-  }
+    const newTodo: Todo = {
+      title: formValue.title,
+      userId: Number(formValue.userId) || 0,
+      completed: formValue.completed,
+    };
 
+    this.createTodo.emit(newTodo);
+    this.form.reset();
+    this.snackBar.open('Задача успешно создана!', 'OK', 
+      { duration: 3000 }
+    );
+  });
+ }
 } 

@@ -1,18 +1,11 @@
-import { createSelector } from "@ngrx/store";
+import { createFeatureSelector, createSelector } from "@ngrx/store";
 import { TodosState } from "./todos.reducer";
+import { Todo } from "../todos-list.component";
 
-interface AppState {
-  todos: TodosState;
-}
 
-export const selectTodosFeature = (state: AppState) => state.todos;
+export const selectTodosFeature = createFeatureSelector<TodosState>('todos');
 
 export const selectTodos = createSelector(
-    selectTodosFeature,
-    (state: TodosState) => state.todos
-);
-
-export const selectTitleIsUnique = createSelector(
   selectTodosFeature,
-  (state: TodosState) => state.titleIsUnique
+  (state: TodosState): Todo[] => state.todos
 );

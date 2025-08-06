@@ -4,34 +4,32 @@ import { UsersActions } from "./user.actions";
 
 export interface UsersState {
   users: User[];
-  emailIsUnique: boolean | null;
 }
 
 const initialState: UsersState = {
   users: [],
-  emailIsUnique: null,
 };
 
-export const userReducer = createReducer(
+export const userReducer = createReducer<UsersState>(
   initialState,
-  on(UsersActions.set, (state, { users }) => ({
-    ...state,
-    users,
-  })),
-  on(UsersActions.createSuccess, (state, { user }) => ({
+  on(UsersActions.loadSuccess, (state, { users }): UsersState => ({
   ...state,
-  users: [...state.users, user]
+  users,
   })),
-  on(UsersActions.editSuccess, (state, { user }) => ({
+  on(UsersActions.edit, (state, { editedUser }): UsersState => ({
   ...state,
-  users: state.users.map(u => u.id === user.id ? user : u)
+    users: state.users.map(user =>
+      user.id === editedUser.id
+        ? editedUser
+        : user
+    ),
   })),
-  on(UsersActions.deleteSuccess, (state, { id }) => ({
+  on(UsersActions.create, (state, { user }): UsersState => ({
   ...state,
-  users: state.users.filter(user => user.id !== id)
+  users: [...state.users, user],
   })),
-  on(UsersActions.checkEmailUniqueSuccess, (state, { isUnique }) => ({
+  on(UsersActions.delete, (state, { id }): UsersState => ({
   ...state,
-  emailIsUnique: isUnique,
+  users: state.users.filter(user => user.id !== id),
   })),
 );
